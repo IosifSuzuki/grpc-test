@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  rest:
+    container_name: "test-rest-server"
+    build:
+      context: .
+      dockerfile: rest.Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - grpc
+    networks:
+      - local-network
+    ports:
+      - '8080:8080'
+
+  grpc:
+    container_name: "test-grpc-server"
+    build:
+      context: .
+      dockerfile: grpc.Dockerfile
+    restart: unless-stopped
+    networks:
+      - local-network
+    ports:
+      - '9001:9001'
+
+networks:
+  local-network:
+    driver: bridge

@@ -1,0 +1,4 @@
+public_host: 0.0.0.0
+grpc_host: test-grpc-server
+http_port: 8080
+grpc_port: 9001

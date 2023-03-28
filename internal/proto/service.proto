@@ -1,0 +1,16 @@
+syntax = "proto3";
+package grpc;
+
+option go_package = "internal/proto/pb";
+
+service Service {
+  rpc Test (GetRequestTest) returns (ResponseTest);
+}
+
+message GetRequestTest {
+  string text = 1;
+}
+
+message ResponseTest {
+  string result = 1;
+}
